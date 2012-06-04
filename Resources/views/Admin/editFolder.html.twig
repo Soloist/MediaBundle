@@ -1,0 +1,29 @@
+{% extends 'FrequenceWebDashboardBundle::admin.html.twig' %}
+
+{% block body %}
+   <h1>Editer le dossier {{ folder.name }}</h1>
+
+    <form class="form-horizontal" method="POST" action="{{ path('soloist_admin_folder_update', folder.routeParams) }}">
+        <fieldset>
+
+            {% include 'SoloistMediaBundle:Admin:formFolder.html.twig' %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                <a href="{{ path('soloist_admin_media_index') }}" class="btn">Annuler</a>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}
+
+{% block aside %}
+<dl>
+    <dt><span class="label">Elément de type</span></dt>
+    <dd>Dossier</dd>
+    <dt><span class="label">Créé le </span></dt>
+    <dd> {{ folder.createdAt | date('d/m/Y H:i:s') }}</dd>
+    <dt><span class="label">Modifié le </span></dt>
+    <dd> {{ folder.updatedAt | date('d/m/Y H:i:s') }}</dd>
+</dl>
+{% endblock %}

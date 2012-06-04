@@ -1,0 +1,28 @@
+<script type="text/javascript">window.soloist_media_bundle = {};</script>
+<div class="row-fluid">
+    {% for media in folder.medias %}
+        {% if loop.index0 % 4 == 0 and loop.index0 != 0 %}
+            </div>
+            <div class="row-fluid">
+        {% endif %}
+        <div class="span3">
+            <div class="thumbnail media-selector" data-id="{{ media.id }}">
+                <div class="thumbnail-subject">
+                    {% include 'SoloistMediaBundle:Thumbnails:' ~ media.type ~ '.html.twig' %}
+                </div>
+                <div class="caption">
+                    <h5>{{ media.name }}
+                        <a href="{{ path('soloist_admin_media_delete', media.routeParams) }}"
+                           class="btn btn-danger btn-mini pull-right ask-delete">
+                            <i class="icon-trash icon-white"></i> Supprimer
+                        </a>
+                        <hr />
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            window.soloist_media_bundle[{{ media.id }}] = {{ media.data | json_encode | raw }};
+        </script>
+    {% endfor %}
+</div>

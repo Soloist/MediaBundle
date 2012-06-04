@@ -1,0 +1,56 @@
+{% extends 'FrequenceWebDashboardBundle::admin.html.twig' %}
+
+{% block body %}
+    <h1>Gestion des medias</h1>
+
+    <table class="table table-bordered folder-list table-condensed" id="soloist-media-table">
+        <thead>
+            <tr>
+                <th class="folder-title">Nom</th>
+                <th class="folder-actions">Actions</th>
+            </tr>
+        </thead>
+        {% for folder in folders %}
+            <tbody>
+                <tr>
+                    <td class="folder-title">{{ folder.name }}</td>
+                    <td class="folder-actions">
+                        <a class="btn btn-mini"
+                           href="{{ path('soloist_admin_folder_edit', folder.routeParams) }}">
+                            <i class="icon-cog"></i> Editer
+                        </a>
+                        <a class="btn btn-mini btn-danger ask-delete"
+                           href="{{ path('soloist_admin_folder_delete', folder.routeParams) }}">
+                            <i class="icon-trash icon-white"></i> Supprimer
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        {% include 'SoloistMediaBundle:Admin:medias.html.twig' %}
+                    </td>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+
+    <div class="form-actions">
+        <div class="btn-group">
+            <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
+                Nouveau
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('soloist_admin_folder_new') }}">Dossier</a></li>
+                <li><a href="{{ path('soloist_admin_media_new', {type: 'image'}) }}">Image</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block aside %}
+<dl>
+    <dt><span class="label">Nombre d'éléments</span></dt>
+    <dd>{{ folders | length }}</dd>
+</dl>
+{% endblock %}

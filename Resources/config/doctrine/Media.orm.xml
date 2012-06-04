@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+    <entity name="Soloist\Bundle\MediaBundle\Entity\Media"
+            table="soloist_media"
+            repository-class="Soloist\Bundle\MediaBundle\Entity\Repository\Media"
+            inheritance-type="SINGLE_TABLE">
+
+        <discriminator-column name="discr" type="string" />
+        <discriminator-map>
+            <discriminator-mapping value="image"    class="Soloist\Bundle\MediaBundle\Entity\Image" />
+            <discriminator-mapping value="youtube"  class="Soloist\Bundle\MediaBundle\Entity\YoutubeVideo" />
+        </discriminator-map>
+
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name"       column="name"      type="string"  />
+
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime">
+            <gedmo:timestampable on="update"/>
+        </field>
+
+        <many-to-one field="folder" target-entity="Soloist\Bundle\MediaBundle\Entity\Folder" inversed-by="medias">
+            <join-column name="folder_id" referenced-column-name="id" on-delete="CASCADE"/>
+        </many-to-one>
+
+    </entity>
+
+
+</doctrine-mapping>

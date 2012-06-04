@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Soloist\Bundle\MediaBundle\Entity\Media">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="folder">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Soloist\Bundle\MediaBundle\Entity\Image">
+        <property name="path">
+            <constraint name="NotBlank" />
+            <constraint name="Image">
+                <option name="mimeTypes">
+                    <value>image/png</value>
+                    <value>image/jpeg</value>
+                    <value>image/gif</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+</constraint-mapping>

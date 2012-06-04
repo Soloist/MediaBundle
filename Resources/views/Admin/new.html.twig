@@ -1,0 +1,26 @@
+{% extends 'FrequenceWebDashboardBundle::admin.html.twig' %}
+
+{% block body %}
+   <h1>Créer un Média</h1>
+
+    <form class="form-horizontal" method="POST" {{ form_enctype(form) }}
+          action="{{ path('soloist_admin_media_create', { type: type }) }}">
+        <fieldset>
+
+            {% include 'SoloistMediaBundle:Admin:form.html.twig' %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Créer le média</button>
+                <a href="{{ path('soloist_admin_media_index') }}" class="btn">Annuler</a>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}
+
+{% block aside %}
+<dl>
+    <dt><span class="label">Nouvel élément de type</span></dt>
+    <dd>Média</dd>
+</dl>
+{% endblock %}
