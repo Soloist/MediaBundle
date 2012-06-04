@@ -17,10 +17,11 @@ class BlockListener
         $event->getManager()
             // Add last_news block
             ->addBlockType('button', array(
-                'name'     => 'Bouton',
-                'action'   => 'SoloistMediaBundle:Default:button',
-                'settings' => array('uri' => null, 'path' => null, 'label' => null),
-                'form'     => new ButtonType()
+                'name'          => 'Bouton',
+                'action'        => 'SoloistMediaBundle:Default:button',
+                'settings'      => array('uri' => null, 'path' => null, 'label' => null),
+                'form'          => new ButtonType(),
+                'form_template' => 'SoloistMediaBundle:AdminBlock:configureButton.html.twig'
             ))
         ;
     }
