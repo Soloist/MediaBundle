@@ -19,7 +19,7 @@ class BlockListener
             ->addBlockType('button', array(
                 'name'          => 'Bouton',
                 'action'        => 'SoloistMediaBundle:Default:button',
-                'settings'      => array('uri' => null, 'path' => null, 'label' => null),
+                'settings'      => array('uri' => null, 'path_bg' => null, 'path_fg' => null, 'name' => null, 'description' => null),
                 'form'          => new ButtonType(),
                 'form_template' => 'SoloistMediaBundle:AdminBlock:configureButton.html.twig'
             ))
