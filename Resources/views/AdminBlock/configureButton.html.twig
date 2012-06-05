@@ -4,8 +4,8 @@
 
     <div class="thumbnail">
         <div class="thumbnail-subject">
-            {% if false %}
-                <img src="{{ block.path | apply_filter('soloist_admin_media') }}" />
+            {% if block.settings.path_bg is defined %}
+                <img src="{{ block.settings.path_bg | apply_filter('soloist_admin_media') }}" />
             {% endif %}
         </div>
         <div class="caption">
@@ -15,8 +15,8 @@
     </div>
     <div class="thumbnail">
         <div class="thumbnail-subject">
-            {% if false %}
-                <img src="{{ block.path | apply_filter('soloist_admin_media') }}" />
+            {% if block.settings.path_fg is defined %}
+                <img src="{{ block.settings.path_fg | apply_filter('soloist_admin_media') }}" />
             {% endif %}
         </div>
         <div class="caption">
