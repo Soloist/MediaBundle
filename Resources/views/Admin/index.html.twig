@@ -3,6 +3,8 @@
 {% block body %}
     <h1>Gestion des medias</h1>
 
+    {{ _self.form_actions() }}
+
     <table class="table table-bordered folder-list table-condensed" id="soloist-media-table">
         <thead>
             <tr>
@@ -34,18 +36,8 @@
         {% endfor %}
     </table>
 
-    <div class="form-actions">
-        <div class="btn-group">
-            <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
-                Nouveau
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ path('soloist_admin_folder_new') }}">Dossier</a></li>
-                <li><a href="{{ path('soloist_admin_media_new', {type: 'image'}) }}">Image</a></li>
-            </ul>
-        </div>
-    </div>
+    {{ _self.form_actions() }}
+
 {% endblock %}
 
 {% block aside %}
@@ -54,3 +46,18 @@
     <dd>{{ folders | length }}</dd>
 </dl>
 {% endblock %}
+
+{% macro form_actions() %}
+<div class="form-actions">
+    <div class="btn-group">
+        <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
+            Nouveau
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ path('soloist_admin_folder_new') }}">Dossier</a></li>
+            <li><a href="{{ path('soloist_admin_media_new', {type: 'image'}) }}">Image</a></li>
+        </ul>
+    </div>
+</div>
+{% endmacro %}
