@@ -24,7 +24,7 @@
                 url:  $container.attr 'data-uri'
                 data: $container.parents('form:first').serialize()
                 success: (data) ->
-                    $('#soloist-node-blocks').html data
+                    $('#soloist-node-blocks').html(data)
                     window.fw.replaceTextareas()
                     addMediaManagerEvents()
 
