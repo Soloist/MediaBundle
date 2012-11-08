@@ -13,6 +13,16 @@
             newWindow = window.open $(this).attr('href'), 'Media manager', windowOptions
             return false
 
+    removeImage = (e) ->
+        e.preventDefault()
+
+        $thumbnail = $(this).parents('.thumbnail:first')
+        $thumbnail.find('input').each( ->
+            $this = $(this)
+            $this.val(null) if $this.attr('name').match(/\[title|path\]$/)
+        )
+        $thumbnail.find('[data-beahvior="image-display"]').attr('src', 'null')
+
     $ ->
         #
         #
@@ -27,6 +37,8 @@
                     $('#soloist-node-blocks').html(data)
                     window.fw.replaceTextareas()
                     addMediaManagerEvents()
+
+        $('[data-behavior="remove-image"]').click(removeImage)
 
         #
         #
